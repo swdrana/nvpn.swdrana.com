@@ -4,6 +4,7 @@ export interface IUser extends Document {
   email: string;
   password: string;
   name: string;
+  theme: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -25,6 +26,11 @@ const UserSchema = new mongoose.Schema<IUser>(
       type: String,
       required: true,
       trim: true,
+    },
+    theme: {
+      type: String,
+      enum: ['system', 'dark', 'light'],
+      default: 'system',
     },
   },
   {
