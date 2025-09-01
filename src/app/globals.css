@@ -5,28 +5,52 @@
 @layer base {
   html {
     font-family: system-ui, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    @apply bg-base-100 text-base-content;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   }
 }
 
 @layer components {
-  .btn-primary {
-    @apply bg-primary-500 hover:bg-primary-600 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
-  }
-  
-  .btn-secondary {
-    @apply bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
-  }
+  /* Custom components can be added here if needed */
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+  
+  /* Theme-aware backgrounds */
+  .bg-card {
+    @apply bg-base-200;
+  }
+  
+  .bg-surface {
+    @apply bg-base-100;
+  }
+  
+  /* Theme-aware borders */
+  .border-default {
+    @apply border-base-300;
+  }
+  
+  /* Theme-aware text colors */
+  .text-muted {
+    @apply text-base-content/60;
+  }
+  
+  .text-subtle {
+    @apply text-base-content/40;
   }
 }
 

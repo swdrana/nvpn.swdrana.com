@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import SessionProvider from '@/components/SessionProvider'
 import { ThemeProvider } from '@/lib/ThemeContext'
+import { LanguageProvider } from '@/contexts/LanguageContext'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
@@ -22,13 +23,15 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100`}>
         <SessionProvider>
-          <ThemeProvider>
-            <Navbar />
-            <main className="min-h-screen pt-16">
-              {children}
-            </main>
-            <Footer />
-          </ThemeProvider>
+          <LanguageProvider>
+            <ThemeProvider>
+              <Navbar />
+              <main className="min-h-screen pt-16">
+                {children}
+              </main>
+              <Footer />
+            </ThemeProvider>
+          </LanguageProvider>
         </SessionProvider>
       </body>
     </html>

@@ -54,12 +54,16 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const root = window.document.documentElement;
     root.classList.remove('light', 'dark');
     
+    let appliedTheme = theme;
     if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      root.classList.add(systemTheme);
-    } else {
-      root.classList.add(theme);
+      appliedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
+    
+    // Apply theme class
+    root.classList.add(appliedTheme);
+    
+    // Set data-theme attribute for DaisyUI
+    root.setAttribute('data-theme', appliedTheme);
     
     // Save to localStorage
     localStorage.setItem('theme', theme);
@@ -84,8 +88,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     
     const handleChange = () => {
       const root = window.document.documentElement;
+      const systemTheme = mediaQuery.matches ? 'dark' : 'light';
       root.classList.remove('light', 'dark');
-      root.classList.add(mediaQuery.matches ? 'dark' : 'light');
+      root.classList.add(systemTheme);
+      root.setAttribute('data-theme', systemTheme);
     };
     
     mediaQuery.addEventListener('change', handleChange);

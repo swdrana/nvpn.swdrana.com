@@ -1,10 +1,11 @@
 "use client";
 
-import { Eye, EyeOff, Lock, Mail, LogIn } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail, LogIn, Shield, ArrowRight } from "lucide-react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import AnimateOnScroll from "@/components/AnimateOnScroll";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -39,98 +40,176 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
-          </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Or{" "}
-            <Link
-              href="/register"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
-            >
-              create a new account
-            </Link>
-          </p>
-        </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <label htmlFor="email" className="sr-only">
-                Email address
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-gray-400" />
+    <div className="min-h-screen bg-gradient-to-br from-base-200 to-base-300">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      
+      <div className="relative min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl w-full">
+          {/* Left Side - Branding */}
+          <div className="hidden lg:flex flex-col justify-center">
+            <AnimateOnScroll animation="fade-in-left">
+              <div className="text-center lg:text-left">
+                <div className="flex items-center justify-center lg:justify-start mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center mr-4">
+                    <Shield className="text-white" size={32} />
+                  </div>
+                  <h1 className="text-4xl font-bold text-base-content">swdRana</h1>
                 </div>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 pl-10 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+                
+                <h2 className="text-3xl md:text-4xl font-bold text-base-content mb-6">
+                  Welcome Back!
+                </h2>
+                
+                <p className="text-xl text-base-content/70 mb-8">
+                  Sign in to access your dashboard and manage your digital services.
+                </p>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center text-base-content/60">
+                    <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
+                    <span>Secure VPN Services</span>
+                  </div>
+                  <div className="flex items-center text-base-content/60">
+                    <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
+                    <span>Professional Web Development</span>
+                  </div>
+                  <div className="flex items-center text-base-content/60">
+                    <div className="w-2 h-2 bg-accent rounded-full mr-3"></div>
+                    <span>Premium Digital Services</span>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div>
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  id="password"
-                  name="password"
-                  type={showPassword ? "text" : "password"}
-                  autoComplete="current-password"
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 pl-10 pr-10 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="text-gray-400 hover:text-gray-600"
-                  >
-                    {showPassword ? (
-                      <EyeOff className="h-5 w-5" />
-                    ) : (
-                      <Eye className="h-5 w-5" />
+            </AnimateOnScroll>
+          </div>
+          
+          {/* Right Side - Login Form */}
+          <div className="flex items-center justify-center">
+            <AnimateOnScroll animation="fade-in-right">
+              <div className="card bg-base-100 shadow-2xl w-full max-w-md">
+                <div className="card-body p-8">
+                  {/* Mobile Branding */}
+                  <div className="lg:hidden text-center mb-8">
+                    <div className="flex items-center justify-center mb-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center mr-3">
+                        <Shield className="text-white" size={24} />
+                      </div>
+                      <h1 className="text-2xl font-bold text-base-content">swdRana</h1>
+                    </div>
+                  </div>
+                  
+                  <div className="text-center mb-8">
+                    <h2 className="text-2xl md:text-3xl font-bold text-base-content mb-2">
+                      Sign In
+                    </h2>
+                    <p className="text-base-content/60">
+                      Enter your credentials to access your account
+                    </p>
+                  </div>
+                  
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Email Field */}
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text font-semibold">Email Address</span>
+                      </label>
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                          <Mail className="h-5 w-5 text-base-content/40" />
+                        </div>
+                        <input
+                          type="email"
+                          placeholder="Enter your email"
+                          className="input input-bordered w-full pl-10 focus:input-primary"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* Password Field */}
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text font-semibold">Password</span>
+                      </label>
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                          <Lock className="h-5 w-5 text-base-content/40" />
+                        </div>
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          placeholder="Enter your password"
+                          className="input input-bordered w-full pl-10 pr-10 focus:input-primary"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          required
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setShowPassword(!showPassword)}
+                          className="absolute inset-y-0 right-0 pr-3 flex items-center text-base-content/40 hover:text-base-content/60"
+                        >
+                          {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                        </button>
+                      </div>
+                    </div>
+                    
+                    {/* Error Message */}
+                    {error && (
+                      <div className="alert alert-error">
+                        <span className="text-sm">{error}</span>
+                      </div>
                     )}
-                  </button>
+                    
+                    {/* Submit Button */}
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="btn btn-primary w-full hover:scale-105 transition-transform"
+                    >
+                      {loading ? (
+                        <span className="loading loading-spinner loading-sm"></span>
+                      ) : (
+                        <>
+                          <LogIn size={20} />
+                          Sign In
+                        </>
+                      )}
+                    </button>
+                  </form>
+                  
+                  {/* Divider */}
+                  <div className="divider my-6">or</div>
+                  
+                  {/* Register Link */}
+                  <div className="text-center">
+                    <p className="text-base-content/60 mb-4">
+                      Don&apos;t have an account?
+                    </p>
+                    <Link 
+                      href="/register"
+                      className="btn btn-outline btn-secondary w-full hover:scale-105 transition-transform"
+                    >
+                      Create New Account
+                      <ArrowRight size={20} />
+                    </Link>
+                  </div>
+                  
+                  {/* Additional Links */}
+                  <div className="text-center mt-6 space-y-2">
+                    <Link 
+                      href="/"
+                      className="link link-primary text-sm"
+                    >
+                      Back to Home
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
+            </AnimateOnScroll>
           </div>
-
-          {error && (
-            <div className="text-red-600 text-sm text-center">{error}</div>
-          )}
-
-          <div>
-            <button
-              type="submit"
-              disabled={loading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                <LogIn className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" />
-              </span>
-              {loading ? "Signing in..." : "Sign in"}
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   );

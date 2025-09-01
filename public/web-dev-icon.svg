@@ -1,0 +1,68 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="webGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea" />
+      <stop offset="100%" style="stop-color:#764ba2" />
+    </linearGradient>
+    <linearGradient id="codeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb" />
+      <stop offset="100%" style="stop-color:#f5576c" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="40" cy="40" r="35" fill="url(#webGradient)" opacity="0.1"/>
+  
+  <!-- Monitor/Screen -->
+  <rect x="15" y="20" width="50" height="35" rx="4" fill="url(#webGradient)" opacity="0.9"/>
+  <rect x="18" y="23" width="44" height="29" rx="2" fill="white" opacity="0.95"/>
+  
+  <!-- Monitor stand -->
+  <rect x="37" y="55" width="6" height="8" fill="url(#webGradient)" opacity="0.7"/>
+  <rect x="30" y="63" width="20" height="3" rx="1.5" fill="url(#webGradient)" opacity="0.7"/>
+  
+  <!-- Code elements on screen -->
+  <rect x="22" y="27" width="16" height="3" rx="1.5" fill="url(#codeGradient)" opacity="0.8"/>
+  <rect x="22" y="32" width="12" height="2" rx="1" fill="url(#webGradient)" opacity="0.6"/>
+  <rect x="22" y="36" width="20" height="2" rx="1" fill="url(#webGradient)" opacity="0.5"/>
+  <rect x="22" y="40" width="8" height="2" rx="1" fill="url(#codeGradient)" opacity="0.7"/>
+  <rect x="22" y="44" width="14" height="2" rx="1" fill="url(#webGradient)" opacity="0.6"/>
+  
+  <!-- Code brackets -->
+  <path d="M45 30 L48 30 L50 32 L48 34 L45 34" stroke="url(#codeGradient)" stroke-width="1.5" fill="none" opacity="0.8"/>
+  <path d="M55 30 L52 30 L50 32 L52 34 L55 34" stroke="url(#codeGradient)" stroke-width="1.5" fill="none" opacity="0.8"/>
+  
+  <!-- Floating code elements -->
+  <g transform="translate(10, 10)">
+    <rect x="0" y="0" width="8" height="8" rx="2" fill="url(#codeGradient)" opacity="0.6">
+      <animate attributeName="y" values="0;-5;0" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <text x="4" y="6" font-family="monospace" font-size="6" fill="white" text-anchor="middle" opacity="0.9">&lt;/&gt;</text>
+  </g>
+  
+  <g transform="translate(62, 15)">
+    <circle cx="4" cy="4" r="4" fill="url(#webGradient)" opacity="0.5">
+      <animate attributeName="cy" values="4;-1;4" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <text x="4" y="7" font-family="monospace" font-size="5" fill="white" text-anchor="middle" opacity="0.8">{}</text>
+  </g>
+  
+  <g transform="translate(8, 60)">
+    <polygon points="4,0 8,4 4,8 0,4" fill="url(#codeGradient)" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+    </polygon>
+  </g>
+  
+  <g transform="translate(65, 55)">
+    <rect x="0" y="0" width="6" height="6" rx="1" fill="url(#webGradient)" opacity="0.5">
+      <animateTransform attributeName="transform" type="rotate" values="0 3 3;360 3 3" dur="6s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  
+  <!-- Cursor -->
+  <g transform="translate(45, 38)">
+    <path d="M0 0 L0 8 L2 6 L4 8 L6 6 L2 4 L0 0" fill="url(#codeGradient)" opacity="0.8">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="1s" repeatCount="indefinite"/>
+    </path>
+  </g>
+</svg>
