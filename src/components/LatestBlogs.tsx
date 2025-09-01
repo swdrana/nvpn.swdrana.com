@@ -38,46 +38,47 @@ export default function LatestBlogs() {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {blogs.map((blog) => (
-            <article key={blog.id} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-colors">
-              <div className="mb-4">
-                <span className="inline-block bg-accent/20 text-accent px-3 py-1 rounded-full text-sm font-medium">
-                  {blog.category}
-                </span>
-              </div>
-              
-              <h3 className="text-xl font-bold text-white mb-3 line-clamp-2">
-                {blog.title}
-              </h3>
-              
-              <p className="text-white/70 mb-4 line-clamp-3">
-                {blog.excerpt}
-              </p>
-              
-              <div className="flex items-center justify-between">
-                <div className="flex items-center text-white/60 text-sm">
-                  <Calendar size={16} className="mr-2" />
-                  {new Date(blog.date).toLocaleDateString()}
+            <Link key={blog.id} href={`/blogs/${blog.id}`} className="block">
+              <article className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 group cursor-pointer">
+                <div className="mb-6">
+                  <span className="inline-block bg-cyan-400/20 text-cyan-300 px-4 py-2 rounded-full text-sm font-bold backdrop-blur-sm border border-cyan-400/30">
+                    {blog.category}
+                  </span>
                 </div>
                 
-                <Link 
-                  href={`/blogs/${blog.id}`}
-                  className="flex items-center text-accent hover:text-accent/80 font-medium text-sm transition-colors"
-                >
-                  Read More
-                  <ArrowRight size={16} className="ml-1" />
-                </Link>
-              </div>
-            </article>
+                <h3 className="text-2xl font-bold text-white mb-4 line-clamp-2 group-hover:text-cyan-300 transition-colors">
+                  {blog.title}
+                </h3>
+                
+                <p className="text-white/80 mb-6 line-clamp-3 text-lg leading-relaxed">
+                  {blog.excerpt}
+                </p>
+                
+                <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                  <div className="flex items-center text-white/70 text-sm">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-2 mr-3">
+                      <Calendar size={16} className="text-cyan-300" />
+                    </div>
+                    <span className="font-medium">{new Date(blog.date).toLocaleDateString()}</span>
+                  </div>
+                  
+                  <div className="flex items-center bg-cyan-400/20 group-hover:bg-cyan-400/30 text-cyan-300 group-hover:text-white font-bold px-4 py-2 rounded-full text-sm transition-all duration-300 backdrop-blur-sm border border-cyan-400/30 group-hover:border-cyan-400/50">
+                    Read More
+                    <ArrowRight size={16} className="ml-2" />
+                  </div>
+                </div>
+              </article>
+            </Link>
           ))}
         </div>
         
-        <div className="text-center mt-12">
+        <div className="text-center mt-16">
           <Link 
             href="/blogs"
-            className="inline-flex items-center bg-accent hover:bg-accent/90 text-accent-content font-bold py-3 px-8 rounded-lg transition-colors"
+            className="inline-flex items-center bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-bold py-4 px-10 rounded-full transition-all duration-300 border border-white/30 hover:border-white/50 hover:scale-105 shadow-xl hover:shadow-2xl"
           >
             View All Posts
-            <ArrowRight size={20} className="ml-2" />
+            <ArrowRight size={20} className="ml-3" />
           </Link>
         </div>
       </div>

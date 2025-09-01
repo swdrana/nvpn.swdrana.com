@@ -45,10 +45,10 @@ export default function Testimonials() {
                     <Star key={i} className="text-yellow-400 fill-current group-hover:scale-110 transition-transform duration-300" size={20} />
                   ))}
                 </div>
-                <p className="text-white/90 mb-6 italic leading-relaxed text-lg">&ldquo;{testimonial.content}&rdquo;</p>
+                <p className="text-white/90 mb-6 italic leading-relaxed text-lg font-normal">&ldquo;{testimonial.content}&rdquo;</p>
                 <div className="border-t border-white/20 pt-4">
-                  <div className="font-bold text-cyan-400 text-lg">{testimonial.name}</div>
-                  <div className="text-white/70 text-sm">{testimonial.role}</div>
+                  <div className="font-medium text-cyan-400 text-lg">{testimonial.name}</div>
+                  <div className="text-white/70 text-sm font-light">{testimonial.role}</div>
                 </div>
               </div>
             </div>

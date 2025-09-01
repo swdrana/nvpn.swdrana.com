@@ -10,22 +10,22 @@ import LatestBlogs from "@/components/LatestBlogs";
 export default function Home() {
   const services = [
     {
-      icon: <Shield className="w-8 h-8" />,
+      icon: <Shield className="w-12 h-12" />,
       title: "Secure VPN",
       description: "Premium VPN services for secure browsing"
     },
     {
-      icon: <Code className="w-8 h-8" />,
+      icon: <Code className="w-12 h-12" />,
       title: "Web Dev",
       description: "Professional web development solutions"
     },
     {
-      icon: <Smartphone className="w-8 h-8" />,
+      icon: <Smartphone className="w-12 h-12" />,
       title: "Digital Service",
       description: "Comprehensive digital solutions"
     },
     {
-      icon: <Clock className="w-8 h-8" />,
+      icon: <Clock className="w-12 h-12" />,
       title: "24/7 Support",
       description: "Round-the-clock customer support"
     }
@@ -36,6 +36,28 @@ export default function Home() {
       {/* Hero Section */}
       <section className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-purple-800 text-white flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
+        
+        {/* Animated Background Icons */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 text-white/10 animate-bounce" style={{animationDelay: '0s', animationDuration: '3s'}}>
+            <Shield className="w-12 h-12" />
+          </div>
+          <div className="absolute top-32 right-20 text-white/10 animate-pulse" style={{animationDelay: '1s', animationDuration: '4s'}}>
+            <Code className="w-16 h-16" />
+          </div>
+          <div className="absolute bottom-40 left-1/4 text-white/10 animate-bounce" style={{animationDelay: '2s', animationDuration: '5s'}}>
+            <Smartphone className="w-10 h-10" />
+          </div>
+          <div className="absolute top-1/3 right-10 text-white/10 animate-pulse" style={{animationDelay: '0.5s', animationDuration: '3.5s'}}>
+            <Clock className="w-14 h-14" />
+          </div>
+          <div className="absolute bottom-20 right-1/3 text-white/10 animate-bounce" style={{animationDelay: '1.5s', animationDuration: '4.5s'}}>
+            <Headphones className="w-12 h-12" />
+          </div>
+          <div className="absolute top-1/2 left-20 text-white/10 animate-pulse" style={{animationDelay: '2.5s', animationDuration: '3s'}}>
+            <Shield className="w-8 h-8" />
+          </div>
+        </div>
         <div className="container mx-auto px-4 text-center relative z-10 py-20">
           <div className="mb-8">
             <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-2xl">
@@ -65,16 +87,16 @@ export default function Home() {
           </div>
 
           {/* Services Grid in Hero */}
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl">
-              <div className="grid grid-cols-2 gap-6">
+          <div className="max-w-xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-4 border border-white/20 shadow-2xl">
+              <div className="grid grid-cols-2 gap-3">
                 {services.map((service, index) => (
                   <div key={index} className="text-center group">
-                    <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 border border-white/30 hover:bg-white/30 transition-all duration-300 hover:scale-105 hover:shadow-xl">
-                      <div className="text-cyan-400 mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-xl p-3 border border-white/30 hover:bg-white/30 transition-all duration-300 hover:scale-105 hover:shadow-xl aspect-square flex flex-col justify-center">
+                      <div className="text-cyan-400 mb-2 flex justify-center group-hover:scale-110 transition-transform duration-300">
                         {service.icon}
                       </div>
-                      <h3 className="text-lg font-bold mb-2">{service.title}</h3>
+                      <h3 className="text-lg font-bold mb-1">{service.title}</h3>
                       <p className="text-white/80 text-sm">{service.description}</p>
                     </div>
                   </div>
@@ -96,17 +118,17 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section>
+      <section className="bg-gray-100 dark:bg-gray-800">
         <Testimonials />
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-gray-50 dark:bg-gray-800">
+      <section className="bg-gradient-to-br from-purple-900/90 via-blue-900/90 to-indigo-900/90 dark:from-purple-900 dark:via-blue-900 dark:to-indigo-900">
         <FAQ />
       </section>
 
       {/* Latest Blogs Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+      <section className="bg-gradient-to-br from-indigo-900/90 via-purple-900/90 to-pink-900/90 dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900">
         <LatestBlogs />
       </section>
     </div>

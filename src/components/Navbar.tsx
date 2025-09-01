@@ -34,10 +34,10 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navbarClasses = `fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ease-in-out ${
+  const navbarClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
     isScrolled 
-      ? 'bg-white/10 backdrop-blur-md shadow-lg border-b border-white/20 text-white' 
-      : 'bg-gradient-to-r from-purple-600 via-pink-500 to-purple-800 text-white border-b border-white/20 shadow-lg backdrop-blur-md'
+      ? 'bg-white/10 backdrop-blur-md text-white shadow-lg border-b border-white/20' 
+      : 'text-white'
   }`;
 
   const services = [
