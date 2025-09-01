@@ -1,59 +1,84 @@
 import Link from "next/link";
-import { Shield, Code, Settings, Clock } from "lucide-react";
+import { Shield, Code, Headphones, Smartphone, Clock } from "lucide-react";
 import AboutUs from "@/components/AboutUs";
 import Statistics from "@/components/Statistics";
 import Testimonials from "@/components/Testimonials";
+import { AppleSection } from "@/components/ScrollEffects";
 import FAQ from "@/components/FAQ";
 import LatestBlogs from "@/components/LatestBlogs";
 
 export default function Home() {
+  const services = [
+    {
+      icon: <Shield className="w-8 h-8" />,
+      title: "Secure VPN",
+      description: "Premium VPN services for secure browsing"
+    },
+    {
+      icon: <Code className="w-8 h-8" />,
+      title: "Web Dev",
+      description: "Professional web development solutions"
+    },
+    {
+      icon: <Smartphone className="w-8 h-8" />,
+      title: "Digital Service",
+      description: "Comprehensive digital solutions"
+    },
+    {
+      icon: <Clock className="w-8 h-8" />,
+      title: "24/7 Support",
+      description: "Round-the-clock customer support"
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary to-secondary">
+    <div className="bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
-      <section className="text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">swdRana</h1>
-          <p className="text-2xl mb-4">Your Trusted Digital Service Partner</p>
-          <p className="text-lg mb-8 max-w-4xl mx-auto">
-            We provide premium VPN services, professional web development, and 
-            innovative digital products to empower your digital journey.
-          </p>
-          <div className="flex gap-4 justify-center mb-4">
-            <Link href="/vpn" className="bg-accent hover:bg-accent/90 text-accent-content font-bold py-3 px-8 rounded-lg text-lg">
+      <section className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-purple-800 text-white flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="container mx-auto px-4 text-center relative z-10 py-20">
+          <div className="mb-8">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-2xl">
+              <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">swdRana</span>
+            </h1>
+            <p className="text-xl md:text-2xl mb-6 max-w-3xl mx-auto drop-shadow-lg">
+              Your Trusted Digital Service Partner
+            </p>
+            <p className="text-base md:text-lg mb-8 max-w-4xl mx-auto opacity-90">
+              We provide premium VPN services, professional web development, and innovative digital products to empower your digital journey.
+            </p>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+            <Link 
+              href="/vpn" 
+              className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            >
               Explore VPN
             </Link>
-            <Link href="/web" className="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-8 rounded-lg border border-white/20 text-lg backdrop-blur-sm">
+            <Link 
+              href="/web" 
+              className="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white px-8 py-4 rounded-full text-lg font-semibold border border-white/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            >
               Web Services
             </Link>
           </div>
-        </div>
-      </section>
 
-      {/* Services Section */}
-      <section className="pb-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="text-center text-white">
-                  <Settings className="mx-auto mb-2 text-white" size={32} />
-                  <h3 className="text-sm font-bold">Digital Service</h3>
-                </div>
-                
-                <div className="text-center text-white">
-                  <Clock className="mx-auto mb-2 text-white" size={32} />
-                  <h3 className="text-sm font-bold">24/7 Support</h3>
-                </div>
-                
-                <div className="text-center text-white">
-                  <Shield className="mx-auto mb-2 text-white" size={32} />
-                  <h3 className="text-sm font-bold">Secure VPN</h3>
-                </div>
-                
-                <div className="text-center text-white">
-                  <Code className="mx-auto mb-2 text-white" size={32} />
-                  <h3 className="text-sm font-bold">Web Dev</h3>
-                </div>
+          {/* Services Grid in Hero */}
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl">
+              <div className="grid grid-cols-2 gap-6">
+                {services.map((service, index) => (
+                  <div key={index} className="text-center group">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 border border-white/30 hover:bg-white/30 transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                      <div className="text-cyan-400 mb-4 flex justify-center group-hover:scale-110 transition-transform duration-300">
+                        {service.icon}
+                      </div>
+                      <h3 className="text-lg font-bold mb-2">{service.title}</h3>
+                      <p className="text-white/80 text-sm">{service.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -61,19 +86,29 @@ export default function Home() {
       </section>
 
       {/* About Us Section */}
-      <AboutUs />
+      <section className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20">
+        <AboutUs />
+      </section>
 
       {/* Statistics Section */}
-      <Statistics />
+      <section className="bg-white dark:bg-gray-900">
+        <Statistics />
+      </section>
 
       {/* Testimonials Section */}
-      <Testimonials />
+      <section>
+        <Testimonials />
+      </section>
 
       {/* FAQ Section */}
-      <FAQ />
+      <section className="bg-gray-50 dark:bg-gray-800">
+        <FAQ />
+      </section>
 
-      {/* Latest Blog Posts Section */}
-      <LatestBlogs />
+      {/* Latest Blogs Section */}
+      <section className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+        <LatestBlogs />
+      </section>
     </div>
   );
 }

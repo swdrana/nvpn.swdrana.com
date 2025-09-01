@@ -36,8 +36,8 @@ const Navbar = () => {
 
   const navbarClasses = `fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ease-in-out ${
     isScrolled 
-      ? 'bg-base-100/98 backdrop-blur-md shadow-lg border-b border-base-300/50' 
-      : 'bg-primary text-primary-content border-b border-primary shadow-sm'
+      ? 'bg-white/10 backdrop-blur-md shadow-lg border-b border-white/20 text-white' 
+      : 'bg-gradient-to-r from-purple-600 via-pink-500 to-purple-800 text-white border-b border-white/20 shadow-lg backdrop-blur-md'
   }`;
 
   const services = [
@@ -50,11 +50,7 @@ const Navbar = () => {
     <nav className={navbarClasses}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className={`text-xl font-bold transition-colors ${
-            isScrolled 
-              ? 'text-base-content hover:text-primary' 
-              : 'text-primary-content hover:text-primary-content/80'
-          }`}>
+          <Link href="/" className="text-xl font-bold transition-colors text-white hover:text-cyan-400">
             swdRana
           </Link>
           
@@ -64,11 +60,7 @@ const Navbar = () => {
             <div className="relative">
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
-                className={`flex items-center space-x-1 transition-colors ${
-                  isScrolled 
-                    ? 'text-base-content hover:text-primary' 
-                    : 'text-primary-content hover:text-primary-content/80'
-                }`}
+                className="flex items-center space-x-1 transition-colors text-white hover:text-cyan-400"
               >
                 <span>{t('nav.services')}</span>
                 <ChevronDown size={16} className={`transition-transform ${
@@ -99,35 +91,19 @@ const Navbar = () => {
               )}
             </div>
             
-            <Link href="/about" className={`transition-colors ${
-              isScrolled 
-                ? 'text-base-content hover:text-primary' 
-                : 'text-primary-content hover:text-primary-content/80'
-            }`}>
+            <Link href="/about" className="transition-colors text-white hover:text-cyan-400">
               {t('nav.about')}
             </Link>
             
-            <Link href="/contact" className={`transition-colors ${
-              isScrolled 
-                ? 'text-base-content hover:text-primary' 
-                : 'text-primary-content hover:text-primary-content/80'
-            }`}>
+            <Link href="/contact" className="transition-colors text-white hover:text-cyan-400">
               {t('nav.contact')}
             </Link>
             
-            <Link href="/blogs" className={`transition-colors ${
-              isScrolled 
-                ? 'text-base-content hover:text-primary' 
-                : 'text-primary-content hover:text-primary-content/80'
-            }`}>
+            <Link href="/blogs" className="transition-colors text-white hover:text-cyan-400">
               {t('nav.blogs')}
             </Link>
             
-            <Link href="/portfolio" className={`transition-colors ${
-              isScrolled 
-                ? 'text-base-content hover:text-primary' 
-                : 'text-primary-content hover:text-primary-content/80'
-            }`}>
+            <Link href="/portfolio" className="transition-colors text-white hover:text-cyan-400">
               {t('nav.portfolio')}
             </Link>
             
@@ -138,11 +114,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`p-2 rounded-lg transition-colors ${
-                isScrolled 
-                  ? 'text-base-content hover:bg-base-200' 
-                  : 'text-primary-content hover:bg-primary-content/10'
-              }`}
+              className="p-2 rounded-lg transition-colors text-white hover:bg-white/20"
             >
               <Menu size={24} />
             </button>
