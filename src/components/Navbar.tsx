@@ -37,7 +37,7 @@ const Navbar = () => {
   const navbarClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
     isScrolled 
       ? 'bg-white/10 backdrop-blur-md text-white shadow-lg border-b border-white/20' 
-      : 'text-white'
+      : 'bg-purple-600 text-white'
   }`;
 
   const services = [
