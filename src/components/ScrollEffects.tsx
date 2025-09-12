@@ -6,12 +6,14 @@ interface ScrollEffectsProps {
   children: React.ReactNode;
   className?: string;
   stickyTop?: boolean;
+  parallaxSpeed?: number;
 }
 
 export default function ScrollEffects({ 
   children, 
   className = '', 
-  stickyTop = false
+  stickyTop = false, 
+  parallaxSpeed = 0.5 
 }: ScrollEffectsProps) {
   const elementRef = useRef<HTMLDivElement>(null);
 
@@ -21,16 +23,37 @@ export default function ScrollEffects({
 
     const handleScroll = () => {
       const rect = element.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      
-      // Simple fade in effect when element comes into view
-      const isVisible = rect.top < windowHeight && rect.bottom > 0;
-      const opacity = isVisible ? 1 : 0.3;
+      const scrolled = window.pageYOffset;
+      const rate = scrolled * -parallaxSpeed;
+
+      // Parallax effect
+      if (parallaxSpeed !== 0) {
+        element.style.transform = `translateY(${rate}px)`;
+      }
+
+      // Sticky effect with fade out
+      if (stickyTop) {
+        const windowHeight = window.innerHeight;
+        const elementHeight = element.offsetHeight;
+        
+        if (rect.top <= 0 && rect.bottom > windowHeight) {
+          element.style.position = 'fixed';
+          element.style.top = '0';
+          element.style.zIndex = '10';
+        } else if (rect.top > 0) {
+          element.style.position = 'relative';
+          element.style.top = 'auto';
+          element.style.zIndex = 'auto';
+        } else if (rect.bottom <= windowHeight) {
+          element.style.position = 'absolute';
+          element.style.top = `${scrolled + windowHeight - elementHeight}px`;
+          element.style.zIndex = 'auto';
+        }
+      }
+
+      // Fade in/out based on scroll position
+      const opacity = Math.max(0, Math.min(1, 1 - Math.abs(rect.top) / window.innerHeight));
       element.style.opacity = opacity.toString();
-      
-      // Simple scale effect
-      const scale = isVisible ? 1 : 0.95;
-      element.style.transform = `scale(${scale})`;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -39,19 +62,19 @@ export default function ScrollEffects({
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [stickyTop]);
+  }, [parallaxSpeed, stickyTop]);
 
   return (
     <div 
       ref={elementRef} 
-      className={`transition-all duration-500 ease-out ${className}`}
+      className={`transition-all duration-300 ease-out ${className}`}
     >
       {children}
     </div>
   );
 }
 
-// Simple section wrapper without complex effects
+// Apple-style section wrapper
 export function AppleSection({ 
   children, 
   className = '', 
@@ -64,10 +87,13 @@ export function AppleSection({
   sticky?: boolean;
 }) {
   return (
-    <section className={`min-h-screen ${backgroundColor} ${className}`}>
-      <div className="w-full h-full">
+    <ScrollEffects 
+      className={`min-h-screen flex items-center justify-center ${backgroundColor} ${className}`}
+      stickyTop={sticky}
+    >
+      <div className="w-full">
         {children}
       </div>
-    </section>
+    </ScrollEffects>
   );
 }

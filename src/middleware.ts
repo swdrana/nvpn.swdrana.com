@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from 'next/server'
 import { getToken } from 'next-auth/jwt'
 
 export const config = {
-  matcher: ['/', '/dashboard', '/profile']
+  matcher: ['/dashboard', '/profile']
 }
 
 export async function middleware(request: NextRequest) {
